@@ -85,12 +85,12 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-6 ml-6">
-            <Link href="/" className="hover:text-pink-400 transition">Home</Link>
-            {["national", "international", "politics", "sports", "technology", "entertainment", "finance"].map((category) => (
+            <Link href="/" className="text-white border-b-2 border-transparent hover:border-pink-500 transition-all duration-200">Home</Link>
+            {["National", "International", "Politics", "Sports", "Technology", "Entertainment", "Finance"].map((category) => (
               <Link
                 key={category}
                 href={`/category/${category}`}
-                className="capitalize hover:text-pink-400 transition"
+                className="text-white border-b-2 border-transparent hover:border-pink-500 transition-all duration-200"
               >
                 {category}
               </Link>
@@ -112,7 +112,7 @@ export default function Navbar() {
             {!isLoading && (
               isLoggedIn ? (
                 <div className="relative">
-                  <button onClick={toggleDropdown} className="hover:text-pink-400 transition cursor-pointer">
+                  <button onClick={toggleDropdown} className="text-white border-b-2 border-transparent hover:border-pink-500 transition-all duration-200">
                     👤 {userName.split(" ")[0]}
                   </button>
                   {showDropdown && (
