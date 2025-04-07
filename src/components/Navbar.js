@@ -70,7 +70,7 @@ export default function Navbar() {
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolling ? "shadow-md py-3" : "py-5"} bg-white`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolling ? "shadow-md py-3" : "py-5"} bg-gray-900`}>
       <div className="container mx-auto flex flex-wrap justify-between items-center px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -92,12 +92,12 @@ export default function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex flex-wrap items-center space-x-4 lg:space-x-6">
-          <Link href="/" className="text-gray-800 hover:text-blue-600">Home</Link>
+          <Link href="/" className="text-white hover:text-white hover:font-bold border-b-2 border-transparent hover:border-pink-500 transition-all duration-200">Home</Link>
           {["national", "international", "politics", "sports", "technology", "entertainment", "finance"].map((category) => (
             <Link
               key={category}
               href={`/category/${category}`}
-              className="text-gray-800 hover:text-blue-600 capitalize"
+              className="text-white hover:text-white hover:font-bold border-b-2 border-transparent hover:border-pink-500 transition-all duration-200"
             >
               {category}
             </Link>
