@@ -1,9 +1,14 @@
-'use client';
+'use client';// This directive indicates that the component is a client-side component.
 
+// Importing necessary components from recharts.
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+
+// Define colors for the pie chart segments.
 
 const COLORS = ['#007bff', '#28a745', '#ffc107', '#dc3545'];
 
+// Prepare data for user role distribution pie chart.
 export default function AdminStatsChart({ data }) {
   const roleData = [
     { name: 'Readers', value: data.readers },
@@ -26,10 +31,10 @@ export default function AdminStatsChart({ data }) {
           <PieChart>
             <Pie
               data={roleData}
-              dataKey="value"
-              nameKey="name"
-              cx="50%"
-              cy="50%"
+              dataKey="value" // Data for the pie chart.
+              nameKey="name"  // Key to determine the value of each segment.
+              cx="50%"// X-coordinate of the center of the pie chart.
+              cy="50%" // Y-coordinate of the center of the pie chart.
               outerRadius={100}
               fill="#8884d8"
               label
@@ -38,7 +43,8 @@ export default function AdminStatsChart({ data }) {
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
-            <Tooltip />
+            // Display tooltips on hover
+            <Tooltip /> 
             <Legend />
           </PieChart>
         </ResponsiveContainer>
@@ -51,7 +57,7 @@ export default function AdminStatsChart({ data }) {
           <PieChart>
             <Pie
               data={newsData}
-              dataKey="value"
+              dataKey="value" // Key to determine the value of each segment.
               nameKey="name"
               cx="50%"
               cy="50%"
@@ -64,6 +70,7 @@ export default function AdminStatsChart({ data }) {
               ))}
             </Pie>
             <Tooltip />
+            // Display a legend for the pie chart.
             <Legend />
           </PieChart>
         </ResponsiveContainer>
