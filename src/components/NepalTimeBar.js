@@ -8,22 +8,27 @@ export default function NepalTimeBar() {
   const [weather, setWeather] = useState(null);
 
   const quotes = [
-    "🧠 “The truth is rarely pure and never simple.” – Oscar Wilde",
-    "🧠 “Journalism is what we need to make democracy work.” – Walter Cronkite",
-    "🧠 “Facts do not cease to exist because they are ignored.” – Aldous Huxley",
-    "🧠 “In a time of deceit telling the truth is a revolutionary act.” – George Orwell",
-    "🧠 “Freedom of the press is not just important to democracy, it is democracy.” – Walter Cronkite",
-    "🧠 “The only thing necessary for the triumph of evil is for good men to do nothing.” – Edmund Burke",
+    " “The truth is rarely pure and never simple.” – Oscar Wilde",
+    " “Journalism is what we need to make democracy work.” – Walter Cronkite",
+    " “Facts do not cease to exist because they are ignored.” – Aldous Huxley",
+    " “News is what somebody does not want you to print.” – George Orwell",
+    " “Journalism is the first rough draft of history.” – Philip L. Graham",
+    " “A good newspaper is a nation talking to itself.” – Arthur Miller",
+    " “The press was to serve the governed, not the governors.” – Hugo Black",
+    " “The news is the first signal of trouble.” – Walter Lippmann",
+    " “If you don’t read the newspaper, you’re uninformed.” – Mark Twain",
+    " “In seeking truth you have to get both sides of a story.” – Walter Cronkite"
   ];
+  
 
-  const goldPrice = "NPR 177,899.33";
+  const goldPrice = "NPR 190,998.00";
   const silverPrice = "NPR 2,035.37";
 
   // ⏰ Time update every second
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(getNepalTime());
-    }, 100);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -31,12 +36,9 @@ export default function NepalTimeBar() {
   useEffect(() => {
     const quoteInterval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * quotes.length);
-      console.log("Selected quote:", quotes[randomIndex]); // Debugging line
       setQuote(quotes[randomIndex]);
     }, 10000);
-    // Set the initial quote when component mounts
     setQuote(quotes[0]);
-    // Cleanup the interval when the component unmounts
     return () => clearInterval(quoteInterval);
   }, []);
 
@@ -84,18 +86,23 @@ export default function NepalTimeBar() {
   }
 
   return (
-    <div className="w-full bg-black text-white-300 text-sm py-1 px-1 flex flex-wrap justify-center items-center gap-13 text-center">
-      <span className="text-white">🕒 Nepal Time: <span className="text-white font-medium">{time}</span></span>
-
-      <span className="italic whitespace-nowrap text-white">{quote}</span>
-
-      <span className="text-white">🪙 Gold: <span className="text-yellow-300 font-semibold">{goldPrice}</span></span>
-
-      <span className="text-white">🥈 Silver: <span className="text-gray-300 font-semibold">{silverPrice}</span></span>
-
-      {weather && (
-        <span className="text-white">🌤️ Kathmandu: <span className="text-blue-300">{weather.temp}</span>, {weather.condition}</span>
-      )}
+    <div className="w-full text-white-300 text-sm py-2 px-4 flex flex-col md:flex-row items-center justify-between backdrop-blur-md bg-[rgba(12,15,26,0.7)] gap-2 z-20">
+    
+    {/* Time - Left */}
+    <div className="w-full md:w-1/4 text-left">
+      <span>🕒 Nepal Time: <span className="font-medium">{time}</span></span>
     </div>
+
+    {/* Quote - Center */}
+    <div className="w-full md:w-2/4 text-center italic px-2">
+      <span className="whitespace-nowrap">{quote}</span>
+    </div>
+
+    {/* Gold Price - Right */}
+    <div className="w-full md:w-1/4 text-right">
+      <span>🪙 Gold: <span className="text-white font-semibold">{goldPrice}</span></span>
+    </div>
+
+  </div>
   );
 }

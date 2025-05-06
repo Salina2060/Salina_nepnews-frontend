@@ -22,7 +22,8 @@ export default function EditorDashboard() {
       if (!token) return;
 
       try {
-        const res = await fetch('http://localhost:8080/api/news/status/draft', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/status/draft`, {
+
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -79,7 +80,7 @@ export default function EditorDashboard() {
     if (!confirm) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/api/news/slug/${slug}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/slug/${slug}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +105,7 @@ export default function EditorDashboard() {
     if (!confirm) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/api/news/slug/${slug}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/slug/${slug}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

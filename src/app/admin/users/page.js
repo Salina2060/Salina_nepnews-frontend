@@ -16,15 +16,15 @@ export default function AdminUserManagementPage() {
 
   useEffect(() => {
     if (!token) return;
-
+  
     const fetchUsers = async () => {
       try {
-        const res = await fetch('http://localhost:8080/api/users', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
+  
         if (res.ok) {
           const data = await res.json();
           setUsers(data);
@@ -38,15 +38,16 @@ export default function AdminUserManagementPage() {
         setLoading(false);
       }
     };
-
+  
     fetchUsers();
   }, [token]);
+  
 
   const handleRoleChange = async (id, newRole) => {
     const loadingToast = toast.loading('Updating role...');
 
     try {
-      const res = await fetch(`http://localhost:8080/api/users/${id}/role?role=${newRole}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${id}/role?role=${newRole}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -98,7 +99,7 @@ export default function AdminUserManagementPage() {
     const loadingToast = toast.loading('Deleting user...');
 
     try {
-      const res = await fetch(`http://localhost:8080/api/users/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

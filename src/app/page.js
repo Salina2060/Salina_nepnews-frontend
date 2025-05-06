@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import NewsList from "../components/NewsList"; // Import NewsList
 import AdBanner from "../components/AdBanner"; // Import Ad Space Component
 import FeaturedNewsSlider from "../components/FeaturedNewsSlider"; // Import News Slider
@@ -19,6 +20,23 @@ export default function Home() {
         </h1>
 
         {/* 🗞️ News Feed with Load More */}
+=======
+"use client";
+
+import NewsList from "../components/NewsList";
+import AdBanner from "../components/AdBanner";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen" style={{ backgroundColor: '#0C0F1A' }}>
+      <AdBanner type="home" />
+
+      <div className="container mx-auto">
+        <h1 className="text-3xl font-bold text-center my-6 text-white">
+          Latest News 📰
+        </h1>
+
+>>>>>>> upstream/main
         <NewsList />
       </div>
     </main>

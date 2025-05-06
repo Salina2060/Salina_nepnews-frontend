@@ -24,7 +24,7 @@ export default function AdminNewsPage() {
   const fetchNews = async (status) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8080/api/news/status/${status}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/status/${status}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -47,7 +47,7 @@ export default function AdminNewsPage() {
   const handleDelete = async (slug) => {
     const confirmToast = toast.loading('Deleting...');
     try {
-      const res = await fetch(`http://localhost:8080/api/news/slug/${slug}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news/slug/${slug}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -115,7 +115,7 @@ export default function AdminNewsPage() {
           {filteredNews.map((n) => (
             <div
               key={n._id || n.slug}
-              className="border rounded shadow p-5 bg-gray hover:bg-green-900 transition cursor-pointer"
+              className="border rounded shadow p-5 bg-gray hover:bg-blue-500 transition cursor-pointer"
             >
               <h2 className="text-xl font-bold text-white-900">{n.title}</h2>
               <p className="text-sm text-white-300 mb-1">
